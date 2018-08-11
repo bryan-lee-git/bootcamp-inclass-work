@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <title>Document</title>
+</head>
+
+<!--Begin Game User Interface-->
+
+    <body class="jumbotron" style="text-align:center;"> 
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-sm-12">
+
+                    <h1>Rock, Paper, Scissors Game</h1><br>
+
+                    <p>Type "r" for rock, Type "s" for scissors, Type "p" for paper.</p>
+                    
+                    <br>
+                
+                    <hr style="margin-bottom: 45px;">
+
+                    <h3 class="reveal" style="color:blueviolet;">Reveal Choices Here...</h3>
+
+                    <br><hr><br>
+
+                    <div class="scoreBox" style="width:75%; margin:0 auto;text-align:center;">
+
+                        <div class="playerScoreCount">
+
+                            <h4>Player Score</h4>
+
+                            <p class="pScoreNumber" style="font-size:3em; font-weight:bold;"></p>
+
+                        </div>
+
+                        <div class="computerScoreCount" style="float:left; width: 48%; display:inline-block;background-color:#888888; border-radius:5px; height: 300px; padding:10px; margin: 10px;">
+
+                            <h4 style="width: 50%; display:inline-block;">Computer Score</h4>
+
+                            <p class="cScoreNumber" style="font-size:3em; font-weight:bold;"></p>
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+<!--End Game User Interface-->
+
+<!--Begin Game Functionality - JavaScript-->
+
+        <script>
+
+            //player has three options: rock (r), paper (p), or scissors (s).
+
+            var gameOptions = ["r", "p", "s"];
+
+            // to calculate points
+
+            var wins = 0;
+            var losses = 0;
+            var ties = 0;
+
+            //choice is made by typing the letter the respective option starts with.
+            
+            document.onkeyup = function(event) {
+
+            //a random option must be generated for the computer's choice.
+
+            var userChoice = event.key;
+            var compChoice = gameOptions[Math.floor(Math.random() * gameOptions.length)];
+
+
+            //set variables for tallying wins in player area, show losses as wins in computer area
+
+            //set up if statements for how winning and losing operates and is tallied
+
+            if ((userChoice === "r") || (userChoice === "p") || (userChoice === "s")) {
+
+                if ((userChoice === "r") && (compChoice ==="s")) {
+                    wins++;
+                }   else if ((userChoice === "r") && (compChoice ==="p")) {
+                    losses++;
+                }   else if ((userChoice === "s") && (compChoice ==="r")) {
+                    losses++;
+                }   else if ((userChoice === "s") && (compChoice ==="p")) {
+                    wins++;
+                }   else if ((userChoice === "p") && (compChoice ==="r")) {
+                    wins++;
+                }   else if ((userChoice === "p") && (compChoice ==="s")) {
+                    losses++;
+                }   else if (userChoice === compChoice) {  
+                    ties++;
+                }      
+
+            //display choices in designated area
+
+                if ((userChoice === "r") || (userChoice === "p") || (userChoice ==="s")) {
+                document.querySelector (".reveal").innerHTML = "You chose: " + userChoice + "..." +  " The computer chose: " + compChoice;
+                }
+
+            //show point tallies in designated areas
+
+                document.querySelector(".cScoreNumber").innerHTML = losses;
+                document.querySelector(".pScoreNumber").innerHTML = wins;
+
+            }
+        };
+        
+        </script>
+
+<!--End Game Functionality - JavaScript-->
+    
+    </body>
+
+</html>
