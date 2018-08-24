@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Stalinist+One');
+
+body {
+
+}
+
+.number {
+    width: 25%;
+}
+
+.operator {
+    width: 20%;
+}
+
+.equal {
+    width: 30%;
+}
+
+#button-clear {
+    width: 49%;
+}
+
+#button-next {
+    width: 49%;
+}
+
+
+.jumbotron {
+    font-family: 'Stalinist One', cursive;
+    background-color: transparent;
+    background-image: url("./zach.jpg");
+    background-position: center;
+    background-repeat: repeat;
+    background-size: 8%;
+    color: white;
+    text-shadow: 5px 5px black;
+}
+
